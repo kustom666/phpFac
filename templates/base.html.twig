@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% block head %}
+			<title>{% block title %}{% endblock %} - WebMine</title>
+		{% endblock %}
+		{% block stylesheets %}
+			<link rel="stylesheet" type="text/css" href="css/default.css">
+		{% endblock %}
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<nav>
+			<ul>
+				<li><a href="#">Web Mine</a></li>
+				<li><a href="#">A Propos</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+
+		{% block content %}
+		{% endblock %}
+
+	</body>
+</html>
