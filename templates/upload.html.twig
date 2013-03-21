@@ -1,0 +1,12 @@
+{% extends "base.html.twig"%}
+
+{% block title %}Envoyer un fichier {% endblock %}
+
+{% block content %}
+	<h1>Envoi du fichier</h1>
+	<form action="upload.php" method="post" enctype="multipart/form-data">
+		<label for="file">Fichier:</label>
+		<input type="file" name="file" id="file"><br>
+		<input type="submit" name="submit" value="Submit">
+	</form>
+{% endblock %}
