@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Recherche{% endblock %}
+
+{% block content %}
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".ville").hide();
+		$(".cinema").hide();
+
+	  $('#villes').on('click', function(){
+	   	$(this).hide();
+	   	$(".cinema").hide();
+	   	$("#cinemas").show();
+	   	$(".ville").show();
+	  });
+	  $('#cinemas').on('click', function(){
+	  	$(this).hide();
+	   	$(".ville").hide();
+	   	$("#villes").show();
+	   	$(".cinema").show();
+	  });
+	});
+</script>
+
+
+<button id="villes">Villes</button>
+<button id="cinemas">Cinemas</button>
+
+	<table class="cinema">
+	    <tr>
+	    	<td>Nom</td>
+	    	<td>Nombre d'écrans</td>
+	    	<td>Nombre de sièges</td>
+	    	<td>Code ville</td>
+	    </tr>
+
+	    {% for cine in cinemas %}
+	        <tr>
+	        	<td>{{cine.nom}}</td>
+		    	<td>{{cine.ecrans}}</td>
+		    	<td>{{cine.sieges}}</td>
+		    	<td>{{cine.code_ville}}</td>
+		    </tr>
+	    {% endfor %}
+    </table>
+    <table class="ville">
+    <tr>
+    	<td>Nom</td>
+    	<td>Code</td>
+    </tr>
+	    {% for ville in villes %}
+	    	<tr>
+	    		<td>{{ville.nom}}</td>
+	    		<td>{{ville.code}}</td>
+	    	</tr>
+	    {% endfor %}
+    </table>
+
+{% endblock %}

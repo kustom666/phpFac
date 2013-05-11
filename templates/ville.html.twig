@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Accueuil {% endblock %}
+
+{% block content %}<h1>Affichage d'une ville</h1>
+{% for ville in villes%}
+<p>
+	<b>Nom :</b> {{ville.nom}}<br/>
+	<b>Code :</b> {{ville.code}}<br/>
+</p>
+{% endfor %}
+{% endblock %}
