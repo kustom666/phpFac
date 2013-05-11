@@ -7,16 +7,16 @@
 		{% block stylesheets %}
 			<link rel="stylesheet" type="text/css" href="css/default.css">
 		{% endblock %}
-		<meta charset="utf-8" />
+		<meta charset="UTF-8" />
 	</head>
 	<body>
 		<header class="navbar navbar-fixed-top">
 			<nav>
 				<a href="/" class="brand"></a>
 				<ul class="nav pull-right">
-					<li><a href="/phpFac/index.php">Web Mine</a></li>
-					<li><a href="/phpFac/file_upload.php">Envoyer un fichier</a></li>
-					<li><a href="/phpFac/show.php">Données</a></li>
+					<li><a href="/index.php">Web Mine</a></li>
+					<li><a href="/file_upload.php">Envoyer un fichier</a></li>
+					<li><a href="/show.php">Données</a></li>
 					<li><a href="#">Contact</a></li>
 				</ul>
 			</nav>
@@ -25,7 +25,6 @@
 			<section class="container">
 				<div class="row">
 					<div class="span8" id="content">
-						<h1>Liste</h1>
 						{% block content %}
 						{% endblock %}
 					</div>
