@@ -2,4 +2,22 @@
 
 {% block title %}Accueuil {% endblock %}
 
-{% block content %}<h1>Salut!</h1>{% endblock %}
+{% block content %}
+
+	<h1>Bienvenue sur Webmine</h1>
+	<h3>A propos de Webmine</h3>
+	<p>
+		Webmine est un projet d'utilisation des données de type open data accessibles directement sur les sites gouvernementaux pour 
+		faciliter l'aggrégation et la recherche dans ces données.
+		Toutes les données sont regroupées sur <a href= "/data.php">la page de recherche</a> et organisées sous la forme d'éléments de base : 
+		ville, cinéma, etc...
+	</p>
+
+	<h3>Proposer des données</h3>
+	<p>
+		Webmine est entièrement ouvert aux propositions extérieures. Si vous possédez des données globales concernant de l'équipement ou des batiments publics : 
+		poste de police, mairie, batiments administratifs, musés, etc... N'hésitez pas à nous les proposer en envoyant vos fichier (de préférence au format csv, avec entête) 
+		via notre <a href="/file_upload.php">formulaire d'envoi</a>
+	</p>
+
+{% endblock %}

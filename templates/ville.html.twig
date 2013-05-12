@@ -3,10 +3,47 @@
 {% block title %}Accueuil {% endblock %}
 
 {% block content %}<h1>Affichage d'une ville</h1>
-{% for ville in villes%}
-<p>
-	<b>Nom :</b> {{ville.nom}}<br/>
-	<b>Code :</b> {{ville.code}}<br/>
-</p>
-{% endfor %}
+
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZFYaEcap-Tx-U5gW7jViFBh8-3mu1aOY&sensor=false"></script>
+
+	<script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng({{lat}}, {{lon}}),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+	<h3>Localisation de la ville</h3>
+
+	<div id="map-canvas"></div>
+
+	<h3>Cinémas dans la ville</h3>
+	{% for cinema in cinemas %}
+		<p>
+			<b>Nom : </b> {{cinema.nom}}<br/>
+	    	<b>Nombre d'écrans : </b>{{cinema.ecrans}}<br/>
+	    	<b>Nombre de sièges : </b>{{cinema.sieges}}<br/>
+		</p>
+	{% endfor %}
+
+{% endblock %}
+
+{% block aside %}
+
+	{% for ville in villes %}
+	<h3>Détails de la ville</h3>
+		<p>
+			<b>Nom :</b> {{ ville.nom }}<br/>
+			<b>Code :</b> {{ ville.code }}<br/>
+			<b>Latitude :</b> {{ lat }}<br/>
+			<b>Longitude :</b> {{ lon }}<br/>
+		</p>
+	{% endfor %}
+
 {% endblock %}

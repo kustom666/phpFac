@@ -3,38 +3,14 @@
 {% block title %}Recherche{% endblock %}
 
 {% block content %}
-
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(".ville").hide();
-		$(".cinema").hide();
-
-	  $('#villes').on('click', function(){
-	   	$(this).hide();
-	   	$(".cinema").hide();
-	   	$("#cinemas").show();
-	   	$(".ville").show();
-	  });
-	  $('#cinemas').on('click', function(){
-	  	$(this).hide();
-	   	$(".ville").hide();
-	   	$("#villes").show();
-	   	$(".cinema").show();
-	  });
-	});
-</script>
-
-
-<button id="villes">Villes</button>
-<button id="cinemas">Cinemas</button>
+<h1>Résultat de la recherche</h1>
 
 	<table class="cinema">
 	    <tr>
-	    	<td>Nom</td>
-	    	<td>Nombre d'écrans</td>
-	    	<td>Nombre de sièges</td>
-	    	<td>Code ville</td>
+	    	<th><b>Nom</b></th>
+	    	<th><b>Nombre d'écrans</b></th>
+	    	<th><b>Nombre de sièges</b></th>
+	    	<th><b>Code ville</b></th>
 	    </tr>
 
 	    {% for cine in cinemas %}
@@ -42,21 +18,60 @@
 	        	<td>{{cine.nom}}</td>
 		    	<td>{{cine.ecrans}}</td>
 		    	<td>{{cine.sieges}}</td>
-		    	<td>{{cine.code_ville}}</td>
+		    	<td><a href="/ville.php?code={{cine.code_ville}}">{{cine.code_ville}}</a></td>
 		    </tr>
 	    {% endfor %}
     </table>
     <table class="ville">
     <tr>
-    	<td>Nom</td>
-    	<td>Code</td>
+    	<th><b>Nom</b></th>
+    	<th><b>Code</b></th>
     </tr>
 	    {% for ville in villes %}
 	    	<tr>
-	    		<td>{{ville.nom}}</td>
-	    		<td>{{ville.code}}</td>
+	    		<td><a href="/ville.php?ville={{ville.nom}}">{{ville.nom}}</a></td>
+	    		<td><a href="/ville.php?code={{ville.code}}">{{ville.code}}</a></td>
 	    	</tr>
 	    {% endfor %}
     </table>
 
+{% endblock %}
+
+{% block aside %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".ville").hide();
+			$(".cinema").hide();
+
+		  $('#villes').on('click', function(){
+		   	$(this).hide();
+		   	$(".cinema").hide();
+		   	$(".cinema").removeClass("table-data");
+		   	$("#cinemas").show();
+		   	$(".ville").show();
+		   	$(".ville").addClass("table-data");
+		  });
+		  $('#cinemas').on('click', function(){
+		  	$(this).hide();
+		   	$(".ville").hide();
+		   	$(".ville").removeClass("table-data");
+		   	$("#villes").show();
+		   	$(".cinema").show();
+		   	$(".cinema").addClass("table-data");
+		  });
+
+		  	$('.searchbar').keyup(function()
+			{
+				searchTable($(this).val());
+			});
+		});
+	</script>
+
+	<h3>Recherche dans les données</h3>
+
+	<p>Entrez les informations que vous souhaitez rechercher : nom de ville, code postal, nom du cinéma, nombre de places, d'écrans, etc.</p>
+
+	<input type="text" class="searchbar"></input><br/>
+	<button id="villes">Villes</button>
+	<button id="cinemas">Cinemas</button>
 {% endblock %}

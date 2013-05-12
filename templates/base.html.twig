@@ -8,11 +8,14 @@
 			<link rel="stylesheet" type="text/css" href="css/default.css">
 		{% endblock %}
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700,900,400italic,700italic,900italic" media="screen" rel="stylesheet" type="text/css">
+
 	</head>
 	<body>
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
-
+	<script type="text/javascript" src="/js/search.js"></script>
 
 		<header class="navbar navbar-fixed-top">
 			<nav>
@@ -32,6 +35,15 @@
 						{% block content %}
 						{% endblock %}
 					</div>
+					<aside class="pull-right" id="sidebar">
+						
+							<h3>Options</h3>
+							<a href="/data.php">Rechercher dans les données</a><br/>
+							<a href="/file_upload.php">Envoyer des données</a><br/>
+							<hr>
+						{% block aside %}
+						{% endblock %}
+					</aside>
 				</div>
 			</section>
 		</div>
